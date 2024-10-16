@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Bootstrap Demo</title>
+    <link href="css/bootstrap.css" rel="stylesheet" />
+    <script src="js/jquery.js" defer></script>
+    <script src="js/bootstrap.js" defer></script>
+    <script src="js/lcp.js" defer></script>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container">
+        <a class="navbar-brand" href="index.html">LCP Test</a>
+      </div>
+    </nav>
+
+    <div class="container mt-5">
+      <h1 class="display-4">Welcome to LCP Test</h1>
+      <p class="lead">We are here to find out how to improve or slow down the LCP!</p>
+      <hr class="my-4" />
+      <p>I will add some Bootstrap styles and scripts to mimic a 'normal' page.</p>
+
+      <h2>Versions</h2>
+      <ul class="list-group">
+        <li class="list-group-item"><a href="large-1img.html">large - 1 image</a></li>
+        <li class="list-group-item"><a href="large-1img-lazy.html">large - 1 image - lazy loaded</a></li>
+        <li class="list-group-item"><a href="large-1img-preload.html">large - 1 image - preloaded</a></li>
+      </ul>
+      <ul class="list-group mt-4" >
+        <li class="list-group-item"><a href="resized-1img.html">resized - 1 image</a></li>
+        <li class="list-group-item"><a href="resized-1img-lazy.html">resized - 1 image - lazy loaded</a></li>
+        <li class="list-group-item"><a href="resized-1img-preload.html">resized - 1 image - preloaded</a></li>
+      </ul>
+
+      <ul class="list-group mt-4" >
+        <li class="list-group-item"><a href="converted-1img-webp.html">converted - 1 image - webp</a></li>
+        <li class="list-group-item"><a href="converted-1img-avif.html">converted - 1 image - avif</a></li>
+        <li class="list-group-item"><a href="converted-1img-preload.html">converted - 1 image - picture tag</a></li>
+      </ul>
+
+ 
+      <script>
+        document.addEventListener("DOMContentLoaded", function() {
+          const listItems = document.querySelectorAll(".list-group-item a");
+          listItems.forEach(item => {
+            const url = item.getAttribute("href");
+            const arr = sessionStorage.getItem(url);
+            const averageValue = arr ? JSON.parse(arr).reduce((a, b) => parseInt(a) + parseInt(b), 0) / JSON.parse(arr).length : 0;
+            if (averageValue) {
+              const span = document.createElement("span");
+              span.className = "badge bg-primary ml-4 badge-sm";
+              span.textContent = `Avg: ${averageValue.toFixed(2)}ms`;
+              item.parentNode.appendChild(span);
+            }
+          });
+        });
+      </script>
+
+      <footer class="footer fixed-bottom bg-primary text-white">
+        <div class="container py-2">LCP timing: <span id="lcptiming">n.a.</span></div>
+      </footer>
+    </div>
+  </body>
+</html>

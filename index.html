@@ -8,6 +8,7 @@
     <script src="js/jquery.js" defer></script>
     <script src="js/bootstrap.js" defer></script>
     <script src="js/lcp.js" defer></script>
+    <script src="js/chart.js" defer></script>
   </head>
   <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -19,44 +20,257 @@
     <div class="container mt-5">
       <h1 class="display-4">Welcome to LCP Test</h1>
       <p class="lead">We are here to find out how to improve or slow down the LCP!</p>
+      <p><b>Getting started:</b> First upload all the files to your webserver. Then disable your browsers cache (Ctrl-Shift-i, go to network and chick Disable cache. Keep the network tab open!!). Then visit and reload all the pages about 25 times until the results become stable.</p>
+
       <hr class="my-4" />
-      <p>I will add some Bootstrap styles and scripts to mimic a 'normal' page.</p>
 
-      <h2>Versions</h2>
+      <h5>Jpeg image</h5>
       <ul class="list-group">
-        <li class="list-group-item"><a href="large-1img.html">large - 1 image</a></li>
-        <li class="list-group-item"><a href="large-1img-lazy.html">large - 1 image - lazy loaded</a></li>
-        <li class="list-group-item"><a href="large-1img-preload.html">large - 1 image - preloaded</a></li>
-      </ul>
-      <ul class="list-group mt-4" >
-        <li class="list-group-item"><a href="resized-1img.html">resized - 1 image</a></li>
-        <li class="list-group-item"><a href="resized-1img-lazy.html">resized - 1 image - lazy loaded</a></li>
-        <li class="list-group-item"><a href="resized-1img-preload.html">resized - 1 image - preloaded</a></li>
+        <li class="list-group-item">
+          <div class="row">
+            <a class="col-10" href="large-1img.html">large - 1 image</a>
+            <span class="col badge bg-primary ml-4 badge-sm">...</span>
+          </div>
+        </li>
+        <li class="list-group-item">
+          <div class="row">
+            <a class="col-10" href="large-1img-lazy.html">large - 1 image - lazy loaded</a>
+            <span class="col badge bg-primary ml-4 badge-sm">...</span>
+          </div>
+        </li>
+        <li class="list-group-item">
+          <div class="row">
+            <a class="col-10" href="large-1img-preload.html">large - 1 image - preloaded</a>
+            <span class="col badge bg-primary ml-4 badge-sm">...</span>
+          </div>
+        </li>
+        <li class="list-group-item">
+          <div class="row">
+            <a class="col-10" href="large-1img-asyncdecoded.html">large - 1 image - decoding async</a>
+            <span class="col badge bg-primary ml-4 badge-sm">...</span>
+          </div>
+        </li>
       </ul>
 
-      <ul class="list-group mt-4" >
-        <li class="list-group-item"><a href="converted-1img-webp.html">converted - 1 image - webp</a></li>
-        <li class="list-group-item"><a href="converted-1img-avif.html">converted - 1 image - avif</a></li>
-        <li class="list-group-item"><a href="converted-1img-preload.html">converted - 1 image - picture tag</a></li>
+      <h5 class="mt-4">Resized jpeg image</h5>
+      <ul class="list-group">
+        <li class="list-group-item">
+          <div class="row">
+            <a class="col-10" href="resized-1img.html">resized - 1 image</a>
+            <span class="col badge bg-primary ml-4 badge-sm">...</span>
+          </div>
+        </li>
+        <li class="list-group-item">
+          <div class="row">
+            <a class="col-10" href="resized-1img-lazy.html">resized - 1 image - lazy loaded</a>
+            <span class="col badge bg-primary ml-4 badge-sm">...</span>
+          </div>
+        </li>
+        <li class="list-group-item">
+          <div class="row">
+            <a class="col-10" href="resized-1img-preload.html">resized - 1 image - preloaded</a>
+            <span class="col badge bg-primary ml-4 badge-sm">...</span>
+          </div>
+        </li>
       </ul>
 
- 
+      <h5 class="mt-4">Newer image formats</h5>
+
+      <ul class="list-group">
+        <li class="list-group-item">
+          <div class="row">
+            <a class="col-10" href="converted-1img-webp.html">converted - 1 image - webp</a>
+            <span class="col badge bg-primary ml-4 badge-sm">...</span>
+          </div>
+        </li>
+        <li class="list-group-item">
+          <div class="row">
+            <a class="col-10" href="converted-1img-avif.html">converted - 1 image - avif</a>
+            <span class="col badge bg-primary ml-4 badge-sm">...</span>
+          </div>
+        </li>
+        <li class="list-group-item">
+          <div class="row">
+            <a class="col-10" href="converted-1img-picturetag.html">converted - 1 image - picture tag</a>
+            <span class="col badge bg-primary ml-4 badge-sm">...</span>
+          </div>
+        </li>
+      </ul>
+
+      <h5 class="mt-4">Video formats</h5>
+
+      <ul class="list-group">
+        <li class="list-group-item">
+          <div class="row">
+            <a class="col-10" href="video-poster.html">video with poster image</a>
+            <span class="col badge bg-primary ml-4 badge-sm">...</span>
+          </div>
+        </li>
+
+        <li class="list-group-item">
+          <div class="row">
+            <a class="col-10" href="video-noposter.html">No poster image</a>
+            <span class="col badge bg-primary ml-4 badge-sm">...</span>
+          </div>
+        </li>
+      </ul>
+
+      <h5 class="mt-4">Multiple images</h5>
+      <ul class="list-group">
+        <li class="list-group-item">
+          <div class="row">
+            <a class="col-10" href="multiple-eager.html">multiple - all eager</a>
+            <span class="col badge bg-primary ml-4 badge-sm">...</span>
+          </div>
+        </li>
+        <li class="list-group-item">
+          <div class="row">
+            <a class="col-10" href="multiple-lazy.html">multiple - all lazy</a>
+            <span class="col badge bg-primary ml-4 badge-sm">...</span>
+          </div>
+        </li>
+        <li class="list-group-item">
+          <div class="row">
+            <a class="col-10" href="multiple-lazy-eager.html">multiple - all lazy lcp eager</a>
+            <span class="col badge bg-primary ml-4 badge-sm">...</span>
+          </div>
+        </li>
+      </ul>
+
       <script>
-        document.addEventListener("DOMContentLoaded", function() {
+        window.addEventListener("load", function () {
+          let data = [];
+
           const listItems = document.querySelectorAll(".list-group-item a");
-          listItems.forEach(item => {
+          listItems.forEach((item) => {
             const url = item.getAttribute("href");
+            const linkText = item.textContent;
             const arr = sessionStorage.getItem(url);
             const averageValue = arr ? JSON.parse(arr).reduce((a, b) => parseInt(a) + parseInt(b), 0) / JSON.parse(arr).length : 0;
+
+            data.push({ url, linkText, averageValue });
+
             if (averageValue) {
-              const span = document.createElement("span");
-              span.className = "badge bg-primary ml-4 badge-sm";
-              span.textContent = `Avg: ${averageValue.toFixed(2)}ms`;
-              item.parentNode.appendChild(span);
+              /* add it to the badge aside the link*/
+              const closestRow = item.closest(".row");
+              const existingSpan = closestRow.querySelector(".badge");
+              if (existingSpan) {
+                existingSpan.textContent = `Avg: ${averageValue.toFixed(0)}ms`;
+              }
             }
+          });
+
+          // the default options for the chart
+          const options = {
+            layout: {
+              padding: 40,
+            },
+            scales: {
+              y: {
+                beginAtZero: true,
+                border: {
+                  display: false,
+                  dash: [5, 5],
+                },
+                grid: {
+                  color: "#ddd",
+                },
+                ticks: {
+                  callback: function (value) {
+                    if (value > 1000) {
+                      return (value / 1000).toFixed(2) + " s";
+                    }
+                    return value + " ms";
+                  },
+                },
+              },
+              x: {
+                border: {
+                  display: false,
+                },
+                grid: {
+                  display: false,
+                },
+                ticks: {
+                  maxRotation: 25,
+                  minRotation: 25,
+                     font: {
+                    size: 11,
+                    family: 'Arial, sans-serif',
+                    weight: 'bold',
+                    color: '#333'
+                  }
+                },
+              },
+            },
+          };
+
+          // Create a container for the chart
+          const chartContainer = document.getElementById("chartContainer");
+
+          // Create the chart using Chart.js
+          const canvas = document.createElement("canvas");
+          chartContainer.appendChild(canvas);
+
+          const ctx = canvas.getContext("2d");
+          new Chart(ctx, {
+            type: "bar",
+            data: {
+              labels: data.map((item) => item.linkText),
+              datasets: [
+                {
+                  label: "Average LCP Timing (ms)",
+                  data: data.map((item) => item.averageValue),
+                  backgroundColor: "#0d6efd",
+                  borderColor: "#0d6efd",
+                  borderWidth: 1,
+                },
+              ],
+            },
+            options,
+          });
+
+          const chartContainerSorted = document.getElementById("chartContainersorted");
+
+          // Create the chart using Chart.js
+          const canvas2 = document.createElement("canvas");
+          chartContainerSorted.appendChild(canvas2);
+
+          const ctx2 = canvas2.getContext("2d");
+          new Chart(ctx2, {
+            type: "bar",
+            data: {
+              labels: data.map((item) => item.linkText),
+              datasets: [
+                {
+                  label: "Average LCP Timing (ms)",
+                  data: data.sort((a, b) => a.averageValue - b.averageValue).map((item) => item.averageValue),
+                  backgroundColor: "#0d6efd",
+                  borderColor: "#0d6efd",
+                  borderWidth: 1,
+                },
+              ],
+            },
+            options,
           });
         });
       </script>
+      <hr class="my-4" />
+
+      <h2 class="mt-4">Let's chart the results</h2>
+      <p>Let's visualize the results and see which one is faster!</p>
+
+      <h5 class="mt-4">Default order:</h5>
+      <div id="chartContainer" class="card my-4"></div>
+
+      <h5>From fast to slow</h5>
+
+      <div id="chartContainersorted" class="card my-4"></div>
+
+      <br />
+      <br />
+      <br />
+      <br />
 
       <footer class="footer fixed-bottom bg-primary text-white">
         <div class="container py-2">LCP timing: <span id="lcptiming">n.a.</span></div>

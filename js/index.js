@@ -1,23 +1,28 @@
-const startTest = async () => {
-    sessionStorage.clear();
-    const listItems = document.querySelectorAll(".list-group-item a");
-    listItems.forEach((item) => {
-      const url = item.getAttribute("href");
-      let filename = url.substring(url.lastIndexOf("/") + 1);
-      sessionStorage.setItem(filename, JSON.stringify([]));
-    });
-  
-    sessionStorage.setItem("testStarted", "true");
+const startTest = async (n) => {
+  return (
+    confirm("Did you remember to disable the brower cache en select 4g network speed?") &&
+    (() => {
+      sessionStorage.clear();
+      const listItems = document.querySelectorAll(".list-group-item a");
+      listItems.forEach((item) => {
+        const url = item.getAttribute("href");
+        let filename = url.substring(url.lastIndexOf("/") + 1);
+        sessionStorage.setItem(filename, JSON.stringify([]));
+      });
 
-    const listItemsArray = Array.from(listItems);
-    const randomItem = listItemsArray[Math.floor(Math.random() * listItemsArray.length)];
-    window.location.href = randomItem.getAttribute("href");
-  };
-  
-  const startButton = document.getElementById("startTest");
-  startButton && startButton.addEventListener("click", startTest);
+      sessionStorage.setItem("testStarted", n);
 
+      const listItemsArray = Array.from(listItems);
+      const randomItem = listItemsArray[Math.floor(Math.random() * listItemsArray.length)];
+      window.location.href = randomItem.getAttribute("href");
+    })()
+  );
+};
 
+const startSlowButton = document.getElementById("startSlowTest");
+const startFastButton = document.getElementById("startFastTest");
+startSlowButton && startSlowButton.addEventListener("click", () => startTest(50));
+startFastButton && startFastButton.addEventListener("click", () => startTest(10));
 
 window.addEventListener("load", function () {
   let data = [];

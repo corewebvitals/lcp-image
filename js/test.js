@@ -27,10 +27,15 @@ document.addEventListener("DOMContentLoaded", () => {
   Promise.all(mediaElements.map(loadMedia)).then(() => {
     logAndRedirect();
   });
+
+  let progress = sessionStorage?.progress || 0;
+  document.getElementById("progress").innerText = progress+'%';
+
+
 });
 
 setTimeout(() => {
-  if (sessionStorage.testStarted === "true") {
+  if (sessionStorage.testStarted) {
     window.location.reload();
   }
 }, 50000);
@@ -45,7 +50,7 @@ new PerformanceObserver((entryList) => {
 const logAndRedirect = () => {
   console.log("Log and redirect");
 
-  if (sessionStorage.testStarted === "true") {
+  if (sessionStorage.testStarted) {
     setTimeout(() => {
       if (timeinms > 0) {
         console.log("LCP VALUE", timeinms);
@@ -75,7 +80,7 @@ const logAndRedirect = () => {
       // Example list of URLs with their entry counts
       const urls = Object.keys(sessionStorage)
         .filter((key) => {
-          if (key == "testStarted" || key.startsWith("index.html")) {
+          if (key == "testStarted" || key.startsWith("index.html") || key=='progress') {
             return false;
           }
           return true;
@@ -87,8 +92,12 @@ const logAndRedirect = () => {
           };
         });
 
-      // Filter URLs with less than 50 entries
-      const filteredUrls = urls.filter((item) => item.entries < 50);
+      // Filter URLs with less than sessionStorage.testStarted entries
+      const filteredUrls = urls.filter((item) => item.entries < sessionStorage.testStarted);
+
+      let totalentries = urls.reduce((a, b) => a + b.entries, 0);
+      let progress = totalentries / (urls.length * sessionStorage.testStarted);
+      sessionStorage.progress = Math.round(progress*100) ; 
 
       if (filteredUrls.length === 0) {
         sessionStorage.removeItem("testStarted");
@@ -99,6 +108,6 @@ const logAndRedirect = () => {
 
         window.location.href = randomUrl;
       }
-    }, 200);
+    }, 400);
   }
 };

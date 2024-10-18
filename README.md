@@ -15,7 +15,7 @@ The project includes multiple versions of a simple HTML page, each with differen
 
 1. Clone the repository:
     ```sh
-    git clone https://github.com/corewebvitals/lcp-test.git
+    git clone https://github.com/corewebvitals/lcp-image.git
     cd lcp-test
     ```
 

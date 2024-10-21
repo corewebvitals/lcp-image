@@ -3,6 +3,7 @@ let timeinms = null;
 document.addEventListener("DOMContentLoaded", () => {
   const images = document.querySelectorAll("img");
   const videos = document.querySelectorAll("video");
+  const animatedElements = document.querySelectorAll(".animated");
 
   const mediaElements = [...images, ...videos];
 
@@ -24,14 +25,25 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   };
 
-  Promise.all(mediaElements.map(loadMedia)).then(() => {
+  const waitForAnimations = (element) => {
+    return new Promise((resolve) => {
+      const handleAnimationEnd = () => {
+        element.removeEventListener("animationend", handleAnimationEnd);
+        resolve();
+      };
+      element.addEventListener("animationend", handleAnimationEnd);
+    });
+  };
+
+  Promise.all([
+    ...mediaElements.map(loadMedia),
+    ...[...animatedElements].map(waitForAnimations)
+  ]).then(() => {
     logAndRedirect();
   });
 
   let progress = sessionStorage?.progress || 0;
-  document.getElementById("progress").innerText = progress+'%';
-
-
+  document.getElementById("progress").innerText = progress + '%';
 });
 
 setTimeout(() => {

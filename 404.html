@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Moved — LCP Image experiments</title>
+    <link rel="canonical" href="https://corewebvitals.github.io/pagespeed/experiments/lcp-image/" />
+    <style>
+      body { font-family: ui-sans-serif, system-ui, sans-serif; max-width: 480px; margin: 6rem auto; padding: 0 1.5rem; color: #18181b; line-height: 1.6; }
+      a { color: #18181b; }
+    </style>
+  </head>
+  <body>
+    <h1 style="font-size:1.25rem;font-weight:600;letter-spacing:-0.01em;">This page has moved.</h1>
+    <p>The LCP Image experiments now live at <a id="newurl" href="https://corewebvitals.github.io/pagespeed/experiments/lcp-image/">corewebvitals.github.io/pagespeed/experiments/lcp-image/</a>.</p>
+    <script>
+      // Map any /lcp-image/<path> request to /pagespeed/experiments/lcp-image/<path>.
+      var newPath = window.location.pathname.replace(/^\/lcp-image/, "/pagespeed/experiments/lcp-image");
+      var target = window.location.origin + newPath + window.location.search + window.location.hash;
+      var a = document.getElementById("newurl");
+      if (a) { a.href = target; a.textContent = target; }
+      window.location.replace(target);
+    </script>
+  </body>
+</html>
